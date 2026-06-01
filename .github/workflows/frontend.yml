@@ -28,7 +28,7 @@ jobs:
       - name: Білд
         working-directory: course-event-client
         env:
-          NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
+          NEXT_PUBLIC_API_URL_EVENTS: ${{ secrets.NEXT_PUBLIC_API_URL_EVENTS }}
         run: npm run build
 
       - name: Перезапустити сервіс
