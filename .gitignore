@@ -1,0 +1,26 @@
+.env*
+CourseEventsApi/.env
+
+# ASP.NET
+CourseEventsApi/bin/
+CourseEventsApi/obj/
+
+# Visual Studio
+CourseEventsApi/.vs/
+CourseEventsApi/*.user
+CourseEventsApi/*.suo
+
+# Secrets
+CourseEventsApi/.env
+CourseEventsApi/.env.*
+CourseEventsApi/appsettings.Development.json
+
+# Next.js
+course-event-client/.next/
+course-event-client/out/
+
+# Node
+course-event-client/node_modules/
+
+# Logs
+*.log

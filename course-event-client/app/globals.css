@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+:root {
+  /* --background: #f7f7ffff;
+  --text: #39393aff; */
+  --graphite: #39393aff;
+  --muted-teal: #689689ff;
+  --bronze-spice: #c75000ff;
+  --ghost-white: #f7f7ffff;
+  --lime-cream: #daff7dff;
+
+  --popupBg: #fffbfc;
+  --popupSubtext: #4a5068;
+  --popupText: #39393aff;
+  --popupShadow: #50505066;
+}
+
+[data-theme="light"] {
+  --background: #fffbfc;
+  --text: #39393aff;
+  --btnColor: #efefef;
+  --boxShadow: #50505066;
+  --placeholder: #4a5068;
+}
+
+[data-theme="dark"] {
+  --text: #fffbfc;
+  --background: #39393aff;
+  --btnColor: #43403f;
+  --boxShadow: #7c7c7cba;
+  --placeholder: #a0a6c0;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-text: var(--text);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+[data-theme="dark"] .leaflet-popup-content-wrapper {
+  background: var(--text);
+  color: var(--background);
+  border-radius: 12px;
+  box-shadow: 0 3px 14px var(--boxShadow);
+}
+
+[data-theme="dark"] .leaflet-popup-tip {
+  background: var(--text);
+}
+
+[data-theme="light"] .leaflet-popup-content-wrapper {
+  background: var(--background);
+  color: var(--text);
+  border-radius: 12px;
+  box-shadow: 0 3px 14px var(--boxShadow);
+}
+
+[data-theme="light"] .leaflet-popup-tip {
+  background: var(--background);
+}
+
+body {
+  background: var(--background);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@keyframes ping {
+  0% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+  75% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+.dark-popup .leaflet-popup-content-wrapper {
+  background: var(--popup-bg, #1a1d28);
+  border: 0.5px solid var(--popup-border, rgba(255, 255, 255, 0.12));
+  border-radius: 10px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  color: var(--popup-text, #e8eaf0);
+  font-family: "Syne", sans-serif;
+  padding: 0;
+}
+.dark-popup .leaflet-popup-tip {
+  background: var(--popup-bg, #1a1d28);
+}
+.dark-popup .leaflet-popup-close-button {
+  color: #4a5068 !important;
+}
