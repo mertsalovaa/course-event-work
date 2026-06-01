@@ -33,5 +33,8 @@ jobs:
 
       - name: Перезапустити сервіс
         run: |
-          pm2 restart frontend || pm2 start npm --name "frontend" -- start
+         pm2 restart frontend
+          if ($LASTEXITCODE -ne 0) {
+            pm2 start npm --name "frontend" -- start
+          }
         working-directory: course-event-client
