@@ -1,0 +1,40 @@
+name: Backend CI/CD
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'CourseEventsApi/**'
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout коду
+        uses: actions/checkout@v4
+
+      - name: Встановити .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0'
+
+      - name: Відновити залежності
+        working-directory: CourseEventsApi
+        run: dotnet restore
+
+      - name: Білд
+        working-directory: CourseEventsApi
+        run: dotnet build --configuration Release --no-restore
+
+      - name: Публікація
+        working-directory: CourseEventsApi
+        run: dotnet publish --configuration Release --output ./publish
+
+      - name: Перезапустити сервіс
+        run: |
+          # Windows
+          Stop-Service -Name "CourseEventsApi" -ErrorAction SilentlyContinue
+          Copy-Item -Path "CourseEventsApi/publish/*" -Destination "C:\services\api" -Recurse -Force
+          Start-Service -Name "CourseEventsApi"
+        shell: pwsh
